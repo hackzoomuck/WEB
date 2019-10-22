@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="css.css">
+    <style>
+    /*선택자
+    h1 {
+        color: red;
+    }*/
+    /*css.css import
+    
+    */
+
+    /*1. 전체 선택자*/
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*2. 태그 선택자*/
+    a {
+        text-decoration: none;
+    }
+
+    /*3. id 선택자*/
+    #hello {
+        color: yellow;
+    }
+
+    /*4. class 선택자*/
+    .world{
+        color: red;
+    }
+
+    /*5. 복합 선택자 - 자손 선택자 &*/
+    .korea .seoul{ /*--코리아 안의 모든 서울*/
+        color: green;
+    }
+
+    /*6. 복합 선택자 - 자식 선택자*/
+    .korea > .seoul {
+        color: blue;
+    }
+
+    .one{
+        font-size: 20px;
+    }
+
+    /*7. 여러 클래스 선택*/
+    .world.one {
+        /*seoul one이 동시에 들어간 element만*//
+        color: pink;
+    }
+    </style>
+</head>
+<body>
+    <!--직접 태크에 css, 선택자가 필요가 없음-->
+    <!--<h1 style="color: blue;">hello world</h1>-->
+    <!-- id는 단 하나의 태그에만 부여가 가능, 아래의 id는 존재하지 않음-->
+    <h1 id="hello">HELLO WORLD</h1>
+    <a class="world one" href="https://google.com">go to google</a>
+    <div class="seoul one">코리아 밖 서울</div>
+    <div class="korea">
+        <div class="seoul">서울</div>
+        <div class="busan">부산
+        <div class="seoul">서울</div>
+        </div>
+    </div>
+</body>
+</html>

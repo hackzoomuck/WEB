@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<title>HTML5 기본 구성</title>
+	<meta name="author" content="webskills.kr">
+	<meta name="description" content="Share Web Skills Free">
+	<meta name="keywords" content="HTML, CSS, XML, XHTML, JavaScript">
+	<link rel="stylesheet" href="css/style.css">
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+    {% for m in menu %}
+        <li>{{m}}</li> <!--jinja2 근데 이건 플라스크에서만 사용-->
+    {%endfor%}
+</body>
+</html>
