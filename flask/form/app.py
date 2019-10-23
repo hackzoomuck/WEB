@@ -46,15 +46,18 @@ def result_lotto():
     my_n = [int(number) for number in request.args.get('my_lotto').split()]
     #교집합/ 이거 말고 이중for문으로 가능, set(winner): set으로 변환하는 것
     cmp_w = len(list(set(winner) & set(my_n))) 
-    cmp_b = len(list(set(bonus) & set(my_n)))
+    #cmp_b = len(list(set(bonus) & set(my_n)))
 
     if cmp_w == 6 :
         lotto_re = '1등'
-    elif cmp_w + cmp_b == 6 :
-        lotto_re = '2등'
+    #elif cmp_w + cmp_b == 6 :
+    #    lotto_re = '2등'
     elif cmp_w == 5 :
-        # if bonus in my_n : lotto_re = '2등' 
-        lotto_re = '3등'
+        if bonus in my_n : 
+        #if cmp_b == 1 : 
+            lotto_re = '2등'
+        else :
+            lotto_re = '3등'
     elif cmp_w == 4 :
         lotto_re = '4등'
     elif cmp_w == 3 :
