@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body> <!--html은 띄어쓰기등을 인식못함-->
+    <h3>1. 반복문</h3>
+    {% for food in foods %} 
+        <li>{{food}}</li>
+    {% endfor %}
+
+    <!--forloop-->
+    {% for food in foods %} 
+        <p>{{ forloop.counter }} {{ food }}</p>
+    {% endfor %}
+
+    <!--empty list-->
+    {% for user in empty_list %}
+        <p>{{user}}</p>
+        <!--비어있을때에 그것을 알려주는 것-->
+    {% empty %}
+        <p>비어있는 리스트입니다.</p>
+    {% endfor %}
+
+    <h3>2. 조건문 </h3>
+    {% if '짜장면' in foods %}
+        <p>짜장면에는 짬뽕국물이지!</p>
+    {% endif %}
+
+    <!-- 반복과 조건 -->
+    {% for food in foods %}
+        <p>{{ forloop.counter }}번째 도는 중...</p>
+
+
+        {% if forloop.first %}
+            <p>짜장면에는 고춧가루지!</p>
+        {% else %}
+            <p>{{ food }}</p>
+        {% endif %}
+    {% endfor %}
+
+<h3>3. filter 활용</h3>
+<!--length filter-->
+<!--variable|filter 붙여서 사용해라-->
+{{ my_sentence|length }}
+
+{% for message in messages %}
+    {% if message|length > 5 %}
+        <p>메세지가 너무 길어요</p>
+    {% else %}
+        <p>{{message}}, {{messages}}</p>
+    {%endif%}
+{%endfor%}  
+
+<!--2. lower-->
+<p>{{ 'ABC'|lower }}</p>
+<!--3. title-->
+<p>{{ my_sentence|title }}</p>
+<!--4. random-->
+<p>{{ foods|random }}</p>
+<!--5. truncate(글자수 제한) 2종류 정도 존재-->
+<p>{{my_sentence|truncatewords:3 }}</p>
+<p>{{my_sentence|truncatechars:3 }}</p>
+
+<!--6. 연산 -->
+<p> {{ 4|add:6 }}</p>
+
+<!--7 URL-->
+<a href="https://google.com">google</a>
+{{ 'naver.com'|urlize }}
+
+<h3>4. 날짜 표현</h3>
+<p> {{datetimenow}} </p>
+<p> {% now "DATIME_FORMAT"%}</p>
+<p> {% now "SHORT_DATETIME_FORMAT"%}</p>
+<p> {% now "DATE_FORMAT"%}</p>
+
+<!--포맷 커스텀-->
+<p>{% now "Y년 m월 d일 (D) h:i" %}</p>
+
+<p>{% now "Y" as current_year %}</p> <!--current_year에 저장-->
+<h4>Copyright {{ current_year }}</h4>
+
+<!-- date filter -->
+<p> {{ datetimenow|date:"SHORT_DATETIME_FORMAT"}} </p>
+
+<h3> 5.lorem </h3>
+<p>{% lorem %}</p>
+<p>{% lorem 3 w %}</p>
+<p>{% lorem 3 p %}</p>
+
+</body>
+</html>
