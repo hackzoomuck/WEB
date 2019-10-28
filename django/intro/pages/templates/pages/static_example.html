@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'example.css' %}">
+</head>
+<body> 
+    <h1>Static 파일 실습.</h1>
+    <!--../static/ex_error_picture.jpg 의 상대경로/장고는 알아서 해줌-->
+    <!-- {% static 'ex_error_picture.jpg' %}-->
+    <img src="{% static 'ex_error_picture.jpg' %}" alt="ex_error_picture.jpg">
+</body>
+</html>

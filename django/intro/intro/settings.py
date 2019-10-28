@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'utils',
     'pages', #만든 app 부분
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,7 +56,12 @@ ROOT_URLCONF = 'intro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [ #추가적으로 감시하라.
+            os.path.join(BASE_DIR, 'intro', 'templates'), #BASE_DIR이라는 변수가 SETTINGS.PY에 정의 되어있음.
+                                                          #최상위 폴더 INTRO 안의 INTRO 그리고 TEMPLATES 폴더(PATH) intro/intro/templates
+                                                          #os마다 구분 문자가 다르기에 대응하기 위함(os.path)
+                                                          #join ,,문자열 합쳐주기?
+        ], 
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
