@@ -1,0 +1,14 @@
+{% extends 'base.html'%}
+
+{%block body%}
+<h1>Article detail</h1>
+
+<h2>{{article.title}}</h2>
+<p>{{article.content}}</p>
+<h5>{{article.created_at}}</h5>s
+<h5>{{article.updated_at}}</h5>
+
+<a href="/articles/{{article.pk}}/edit/">수정</a>
+<a href="/articles/{{article.pk}}/delete/">삭제</a>
+<a href="/articles">Index로</a>
+{%endblock%}

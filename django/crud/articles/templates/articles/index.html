@@ -3,11 +3,12 @@
 {% block body %}
 
 <h1>ARTICLE INDEX</h1>
+<!--link 만드는 태그 a-->
+<a href="/articles/new/">NEW ARTICLE</a>
 <ul>
     {% for article in articles %}
     <li>
-        <h3>{{article.title}}</h3>
-        <p>{{article.content}}</p>
+        <a href="/articles/{{ article.pk }}/">{{article.title}}</a> <!--클릭 할 수 있도록-->
     </li>
     {% endfor %}
 </ul>

@@ -1,12 +1,22 @@
 <!--Form Tag를 사용하여, receive로 데이터 보내기-->
 <!--title, content-->
 {%extends 'base.html'%}
-
 {% block body%}
-
 <h1>NEW ARTICLE</h1>
-<form action="/articles/create/", method="GET">
+<!--
+<form action="/articles/create/", method="GET"> 
+-->
+<!--GET이 아닌 POST를 써야하는 이유-->
+<!--1. GET의 의마상 맞지 않다.-->
+<!--2. 데이터가 URL에 노출되면 안되기 때문에(보안)-->
+<!--F5로 게시글이 생기는 것을 방지하기 위함-->
+<!--CREATE로 보낸 요청은 DB에 생성되는 것이기에 최소한의 신원 확인이 필요 (CSRF)-->
+<form action="/articles/create/", method="POST"> 
+{% csrf_token %}
+<label for="">Title: </label>
 <input type="text" name="title">
+<label for="">Content: </label>
 <input type="text" name="content">
 <input type="submit">
+</form>
 {%endblock%}
