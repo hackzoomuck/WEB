@@ -11,7 +11,10 @@
 <!--2. 데이터가 URL에 노출되면 안되기 때문에(보안)-->
 <!--F5로 게시글이 생기는 것을 방지하기 위함-->
 <!--CREATE로 보낸 요청은 DB에 생성되는 것이기에 최소한의 신원 확인이 필요 (CSRF)-->
-<form action="/articles/create/", method="POST"> 
+<!--<form action="/articles/create/", method="POST">
+#{% url 'articles:screate' %}#
+--> 
+<form action="", method="POST"> <!--액션에 없으면 자기자신-->
 {% csrf_token %}
 <label for="">Title: </label>
 <input type="text" name="title">

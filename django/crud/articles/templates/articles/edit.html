@@ -3,7 +3,9 @@
 {% block body %}
 
 <h1>Edit Article</h1>
-<form action="/articles/{{article.pk}}/update/", method="POST"> 
+<!--<form action="/articles/{{article.pk}}/update/", method="POST"> -->
+<!--#{% url 'articles:update' article.pk%}#-->
+<form action="", method="POST"> 
 {% csrf_token %}
 <label for="">Title: </label>
 <!--input tag에만 해당함 value-->

@@ -8,7 +8,16 @@
 <h5>{{article.created_at}}</h5>s
 <h5>{{article.updated_at}}</h5>
 
-<a href="/articles/{{article.pk}}/edit/">수정</a>
+<!--<a href="/articles/{{article.pk}}/edit/">수정</a>
 <a href="/articles/{{article.pk}}/delete/">삭제</a>
-<a href="/articles">Index로</a>
+<a href="/articles">Index로</a>-->
+<a href="{%url 'articles:index'}">LIST</a>
+<a href="{%url 'articles:edit' article.pk%}">edit</a>
+<a href=>delete</a>
+<!-- 태그 POST 요청을 보낼 수 없습니다. 그렇다면 form tag! 삭제하는 부분 form으로 변경하고 메소드에 post넣어서
+어떻게 post요청하는 지?-->
+<form action="{%url 'articles:delete' article.pk%}" method="POST">
+    {%crsf_token%}
+    <input type="submit" value="Delete">
+</form>
 {%endblock%}
