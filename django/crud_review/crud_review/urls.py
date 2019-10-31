@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('students/',include('students.urls')),
+    path('students/',include('students.urls')), 
+    #보통 앱이름으로 함. 파이썬의 특정 모듈을 가져올때처럼 생각하자
+    #students.urls
     path('admin/', admin.site.urls),
 ]
