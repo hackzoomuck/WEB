@@ -1,0 +1,47 @@
+{% extend 'base.html'%}
+
+{%block body%}
+<form action="" method="POST"> <!--action 비어있는 건 나 자신으로 -->
+{% csrf_token %}
+    <div>
+        <label for = "">title : </label>
+        <input type="text" name="title" value="{{movie.title}}">
+    </div>
+    <div>
+        <label for = "">title en: </label>
+        <input type="text" name="title_en" value="{{movie.title_en}}">
+    </div>
+    <div>
+        <label for = "">audience: </label>
+        <input type="number" name="audience" value="{{movie.audience}}">
+    </div>
+    <div>
+        <label for = "">open date: </label>
+        <input type="date" name="open_date" value="{{movie.open_date|date:'Y-m-d'}}">
+    </div>
+    <div>
+        <label for = "">genre: </label>
+        <input type="text" name="genre" value="{{movie.genre}}">
+    </div>
+    <div>
+        <label for = "">watch grade: </label>
+        <input type="text" name="watch_grade" value="{{movie.watch_grade}}">
+    </div>
+    <div>
+        <label for = "">score: </label>
+        <input type="number" name="score" step="0.01" min="0" max="10" value="{{movie.score}}"><!--몇단위로 올라갈지-->
+    </div>
+    <div>
+        <label for = "">poster url: </label>
+        <input type="text" name="poster_url" value="{{movie.poster_url}}">
+    </div>
+    <div>
+        <label for = "">description: </label>
+        <textarea name="description" >{{movie.description}} </textarea>
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+{% endblock %}
