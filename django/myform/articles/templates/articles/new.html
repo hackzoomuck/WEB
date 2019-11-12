@@ -1,0 +1,15 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h1>Article Form</h1>
+<form action = "" method="POST">
+    {% csrf_token %}
+    {% comment %} <label for="">TITLE</label>
+    <input type="text" name="title">
+    <label for="">CONTENT</label>
+    <textarea name="content" id="" cols="30" rows="10"></textarea>
+    {% endcomment %}
+    {{article_form.as_p}}
+    <input type="submit">
+{% endblock %}
