@@ -3,7 +3,7 @@ from .models import Article
 
 
 class ArticleForm(forms.ModelForm): #특정 모델을 위한 폼
-    class Meta: #mata라는 class의 의미 => class에 대한 정보가 담긴 class
+    class Meta: #meta라는 class의 의미 => class에 대한 정보가 담긴 class
         model = Article
         fields = ['title','content',]
 # class ArticleForm(forms.Form):

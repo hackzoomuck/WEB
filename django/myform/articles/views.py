@@ -107,6 +107,10 @@ def edit(request, pk):
         #Article 수정하는 form 보여주기
         article_form = ArticleForm(instance=article)
     
+    #이 세줄을 else에 넣지 않은 것은 
+    # 1. else(곧 post요청이 아닐때), 
+    # 2. 옳은 데이터가 아닐때 실행되는 데 
+    # 2.가 실행 되었을 때 HttpRespons객체를 return 하지 못함.
     context = {
         'article_form':article_form,
     }
