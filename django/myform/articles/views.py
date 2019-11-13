@@ -4,11 +4,11 @@ from .forms import ArticleForm
 
 # Create your views here.
 def index(request):
-   articles = Article.objects.all()
-   context = {
-        'articles' : articles,
+    articles = Article.objects.all()
+    context = {
+        'articles': articles,
     }
-return render(request, 'articles/index.html', context)
+    return render(request, 'articles/index.html', context)
 
 # def new(request):
 #     if request.method == 'POST':
@@ -24,7 +24,7 @@ return render(request, 'articles/index.html', context)
 #             #3. 데이터베이스에 article 만들기!
 #             article = Article.objects.create(title=title, content=content)
 #             #4. redirect -> detail 
-#             return redirect('articles.detail',article.pk)
+#             return redirect('articles:detail',article.pk)
 #     else:
 #         article_form = ArticleForm()
 #         context={
@@ -44,7 +44,7 @@ def new(request):
             #3. 데이터베이스에 article 만들기!
             article = article_form.save()
             #4. redirect -> detail 
-            return redirect('articles.detail',article.pk)
+            return redirect('articles:detail',article.pk)
     else:
         article_form = ArticleForm()
 
@@ -52,7 +52,7 @@ def new(request):
     context={
         'article_form':article_form,
     }
-    return render(request, 'artlcles/new.html', context)
+    return render(request, 'articles/new.html', context)
 
 def detail(request, pk):
     #1. pk번째 데이터를 가져오기
@@ -93,12 +93,12 @@ def detail(request, pk):
 
 def edit(request, pk):
     article = Article.objects.get(pk=pk)
-    if request.method = 'POST':
+    if request.method == 'POST':
         #Article 수정
         #1. 넘어온 데이터받기 
-        article_form = ArticleForm(request.POST, instance=aritcle)
+        article_form = ArticleForm(request.POST, instance=article)
         #2. 데이터 검증
-        if article_form.is_vaild():
+        if article_form.is_valid():
             #3. 검증된 데이터로 수정 & 저장
             article_form.save()
             #4. redirect -> detail
@@ -110,4 +110,4 @@ def edit(request, pk):
     context = {
         'article_form':article_form,
     }
-    return render(request, 'articles/new.html')
+    return render(request, 'articles/new.html', context)
