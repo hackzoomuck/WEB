@@ -8,10 +8,10 @@
 </head>
 <body>
     <nav>
-        <span> {{user.username}} </span>
+        <span> {{ user.username }} </span>
         {% if user.is_authenticated %}
         <form action="{% url 'accounts:logout' %}" method="POST">
-        {% csrf_token %}
+            {% csrf_token %}
         <input type="submit" value="로그아웃!">
         </form>
         <a href= "{% url 'accounts:edit' %}">회원 정보 수정</a>
