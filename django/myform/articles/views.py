@@ -2,12 +2,24 @@ from django.shortcuts import render, redirect
 from .models import Article
 from .forms import ArticleForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import  Paginator
 
 # Create your views here.
 def index(request):
-    articles = Article.objects.all()
+    article_list = Article.objects.all()
+    #pagination
+    #1. articles를 Paginator에 입력
+    paginator = Paginator(article_list, 3)
+    #2. 몇번째 page를 보여줄건지 GET으로 가져옴
+    page = request.GET.get('page')
+    #3. 해당하는 page의 articles만 뽑기
+    articles = paginator.get_page(page)
+    #4. 총 page 수를 range로 변환
+    #num_pages = range(1, articles.paginator.num_pages()+1)
+
     context = {
         'articles': articles,
+        #'num_pages': num_pages,
     }
     return render(request, 'articles/index.html', context)
 
@@ -139,3 +151,15 @@ def like(request, pk):
         #3-2. 좋아요
         article.like_users.add(request.user)
     return redirect('articles:detail', pk)
+
+#GET요청을 받음
+def search(request):
+    #1. request로 부터 검색어 가져오기
+    query = request.GET.get('query') #=> 
+    #2. db(article)에서 제목에 검색어가 있는지 찾기
+    articles = Article.objects.filter(title__contains=query) #특정한 조건으로 db가져오는 것
+    #3. context로 결과값 template에 넘겨주기
+    context = {
+        'articles': articles,
+    }
+    return render(request, 'articles/search.html', context)
